@@ -1,0 +1,84 @@
+{% extends "./base.html" %}
+{% load static %}
+{% block title %}Home{% endblock %}
+{% block content1 %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/main css/style.css' %}"/>
+{% endblock %}
+
+
+{% block content %}
+<main>
+    <!--========seccion para el la entrega del eslogan y el mensaje===-->
+
+    <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-light">SLOGAN</h1>
+                <p class="lead text-muted">TILAPIA FRUTO DE VIDA UN PRODUCTO PRODUCIDO POR LA EMPRESA COLOMBIANA PARA EL EXTRANJERO</p>
+
+            </div>
+        </div>
+    </section>
+
+    <!--========seccion de muestra de productos===-->
+
+    <section id="productos_casa" class="productos_ofrecidos">
+
+        <div class="section-title">
+            <h2 data-aos="fade-up" class="aos-init">Productos ofrecidos</h2>
+            <p data-aos="fade-up" class="aos-init">Nuestros amplia seleccion de productos los puede encontrar a
+                continuacion</p>
+        </div>
+
+        <section id="pricing1" class="pricing">
+            <div class="container-fluid">
+
+                <div class="row">
+                    {% csrf_token %}
+                    {% for product in products %}
+                    {% if "Tilapia" in product.category.name %}
+                    <div class="col-lg-3 col-md-6 aos-init" data-aos="fade-up">
+                        <div class="box">
+                            <h3>{{ product.title }}</h3>
+                            <h4><sup>$</sup>{{ product.price }}<span> / Kg</span></h4>
+                            <img class="img-fluid " src="{{ product.image.url }}" alt="Responsive image"
+                                 style="height: 200px; height: 200px">
+                            <div class="btn-wrap">
+                                <p>{{ product.description }}</p>
+     <!-- ======= this part creates a button that sends the data in forms to the respective view =======-->
+                                <div class="btn-wrap">
+                                    <form method="post" action="/#pricing1" class="form-group align-content-center">
+                                        {% csrf_token %}
+
+
+
+                                        <input type="hidden" name="name" id="name" value={{ product.title }}>
+                                        <input type="hidden" name="price" id="price" value={{ product.price }}>
+                                        <input type="hidden" name="currentuser" id="currentuser" value={{ request.user.id }}>
+
+
+                                        <button , name="send_data" type="submit" class="btn-buy">buy item</button>
+
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+
+
+                </div>
+
+            </div>
+        </section><!-- End Pricing Section -->
+
+
+        </div>
+        </div>
+        </div>
+    </section>
+
+</main>
+{% endblock %}

@@ -1,0 +1,993 @@
+/**
+* Template Name: Flexor - v2.4.1
+* Template URL: https://bootstrapmade.com/flexor-free-multipurpose-bootstrap-template/
+* Author: BootstrapMade.com
+* License: https://bootstrapmade.com/license/
+*/
+
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+
+
+a {
+  display: flex;
+  color: #ff5821;
+}
+
+a:hover {
+  color: #ff7e54;
+  text-decoration: none;
+}
+
+/*--------------------------------------------------------------
+# Back to top button
+--------------------------------------------------------------*/
+.back-to-top {
+  position: fixed;
+  display: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 3px;
+  right: 15px;
+  bottom: 15px;
+  background: #ff5821;
+  color: #fff;
+  transition: display 0.5s ease-in-out;
+  z-index: 99999;
+}
+
+.back-to-top i {
+  font-size: 24px;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+}
+
+.back-to-top:hover {
+  color: #fff;
+  background: #ff774a;
+  transition: background 0.2s ease-in-out;
+}
+
+/*--------------------------------------------------------------
+# Top Bar
+--------------------------------------------------------------*/
+#topbar {
+  background: #39312f;
+  font-size: 14px;
+  padding: 0;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+#topbar .contact-info ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+#topbar .contact-info li {
+  display: inline-block;
+  padding: 8px 0;
+}
+
+#topbar .contact-info li + li {
+  margin-left: 18px;
+}
+
+#topbar .contact-info a {
+  color: rgba(255, 255, 255, 0.8);
+  transition: 0.3s;
+}
+
+#topbar .contact-info a:hover {
+  color: #fff;
+}
+
+#topbar .contact-info i {
+  color: #ff5821;
+  padding-right: 4px;
+}
+
+#topbar .cta a {
+  color: #fff;
+  background: #ff5821;
+  padding: 8px 20px;
+  display: inline-block;
+  transition: 0.3s;
+}
+
+#topbar .cta a:hover {
+  background: #ff6b3b;
+}
+
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+#header {
+  height: 70px;
+  transition: all 0.5s;
+  z-index: 997;
+  transition: all 0.5s;
+  padding: 10px 0;
+  background: #fff;
+}
+
+#header.header-scrolled {
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+}
+
+#header .logo h1 {
+  font-size: 28px;
+  margin: 0;
+  padding: 8px 0;
+  line-height: 1;
+  font-weight: 700;
+  font-family: "Open Sans", sans-serif;
+}
+
+#header .logo h1 a, #header .logo h1 a:hover {
+  color: #635551;
+  text-decoration: none;
+}
+
+#header .logo img {
+  padding: 0;
+  margin: 0;
+  max-height: 40px;
+}
+
+#main {
+  z-index: 3;
+}
+
+/*--------------------------------------------------------------
+# Navigation Menu
+--------------------------------------------------------------*/
+/* Desktop Navigation */
+.nav-menu .menu-btn{
+
+
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  transition: all .5s ease-in-out;
+  border: transparent;
+  position: absolute;
+  left: 90%;
+   top: 50%;
+
+
+}
+/* menu button in sape of square */
+.menu-btn_burger{
+  width: 20px;
+  height: 3px;
+  background: black;
+  border-radius: 2px;
+  box-shadow: 0 10px 5px rgba(255, 21, 27, .2);
+  transition: all .5s ease-in-out;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  position: absolute;
+
+}
+
+.menu-btn_burger::before,
+.menu-btn_burger::after{
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 3px;
+  background: black;
+  border-radius: 10px;
+  box-shadow: 0 10px 5px rgba(255, 21, 27, .2);
+  transition: all .5s ease-in-out;
+}
+
+.menu-btn_burger::before{
+  transform: translateY(-7px);
+
+}
+.menu-btn_burger::after{
+  transform: translateY(6px);
+
+}
+
+/* animation of the button menu-btn */
+
+.menu-btn.open .menu-btn_burger{
+  transform: translateX(-30px);
+  background: transparent;
+  box-shadow: none;
+}
+.menu-btn.open .menu-btn_burger::before{
+  transform: rotate(45deg)translate(21px, -21px);
+
+}
+.menu-btn.open .menu-btn_burger::after{
+  transform: rotate(-45deg)translate(21px, 21px);
+
+}
+
+.nav-menu, .nav-menu * {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-menu > ul > li {
+  position: relative;
+  white-space: nowrap;
+  float: left;
+}
+
+.nav-menu a {
+  display: block;
+  position: relative;
+  color: orangered;
+  padding: 0px 0px;
+  transition: 0.3s;
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+
+  text-shadow: 0 10px 5px rgba(255, 21, 27, .5);
+}
+
+.nav-menu a:hover, .nav-menu .active > a, .nav-menu li:hover > a {
+  color: saddlebrown;
+  text-decoration: none;
+}
+
+
+
+.nav-menu .drop-down ul {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: calc(100% + 30px);
+  z-index: 99;
+  opacity: 0;
+  visibility: hidden;
+  padding: 10px 0;
+  background: #fff;
+  box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+  transition: ease all 0.3s;
+  border-radius: 8px;
+}
+
+.nav-menu .drop-down:hover > ul {
+  opacity: 1;
+  top: 100%;
+  visibility: visible;
+}
+
+.nav-menu .drop-down li {
+  min-width: 180px;
+  position: relative;
+}
+
+.nav-menu .drop-down ul a {
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: none;
+  color: lightne(#473d3a, 10);
+}
+
+.nav-menu .drop-down ul a:hover, .nav-menu .drop-down ul .active > a, .nav-menu .drop-down ul li:hover > a {
+  color: #ff5821;
+}
+
+.nav-menu .drop-down > a:after {
+  content: "\ea99";
+  font-family: IcoFont;
+  padding-left: 5px;
+}
+
+.nav-menu .drop-down .drop-down ul {
+  top: 0;
+  left: calc(100% - 30px);
+}
+
+.nav-menu .drop-down .drop-down:hover > ul {
+  opacity: 1;
+  top: 0;
+  left: 100%;
+}
+
+.nav-menu .drop-down .drop-down > a {
+  padding-right: 35px;
+}
+
+.nav-menu .drop-down .drop-down > a:after {
+  content: "\eaa0";
+  font-family: IcoFont;
+  position: absolute;
+  right: 15px;
+}
+
+@media (max-width: 1366px) {
+  .nav-menu .drop-down .drop-down ul {
+    left: -90%;
+  }
+  .nav-menu .drop-down .drop-down:hover > ul {
+    left: -100%;
+  }
+  .nav-menu .drop-down .drop-down > a:after {
+    content: "\ea9d";
+  }
+}
+
+/* Mobile Navigation */
+.mobile-nav-toggle {
+  position: fixed;
+  right: 15px;
+  top: 20px;
+  z-index: 9998;
+  border: 0;
+  background: none;
+  font-size: 24px;
+  transition: all 0.4s;
+  outline: none !important;
+  line-height: 1;
+  cursor: pointer;
+  text-align: right;
+}
+
+.mobile-nav-toggle i {
+  color: #ff5821;
+}
+
+.mobile-nav {
+  position: fixed;
+  top: 55px;
+  right: 15px;
+  bottom: 15px;
+  left: 15px;
+  z-index: 9999;
+  overflow-y: auto;
+  background: #fff;
+  transition: ease-in-out 0.2s;
+  opacity: 0;
+  visibility: hidden;
+  border-radius: 10px;
+  padding: 10px 0;
+}
+
+.mobile-nav * {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mobile-nav a {
+  display: block;
+  position: relative;
+  color: #473d3a;
+  padding: 10px 20px;
+  font-weight: 500;
+  outline: none;
+}
+
+.mobile-nav a:hover, .mobile-nav .active > a, .mobile-nav li:hover > a {
+  color: #ff5821;
+  text-decoration: none;
+}
+
+.mobile-nav .drop-down > a:after {
+  content: "\ea99";
+  font-family: IcoFont;
+  padding-left: 10px;
+  position: absolute;
+  right: 15px;
+}
+
+.mobile-nav .active.drop-down > a:after {
+  content: "\eaa1";
+}
+
+.mobile-nav .drop-down > a {
+  padding-right: 35px;
+}
+
+.mobile-nav .drop-down ul {
+  display: none;
+  overflow: hidden;
+}
+
+.mobile-nav .drop-down li {
+  padding-left: 20px;
+}
+
+.mobile-nav-overly {
+  width: 100%;
+  height: 100%;
+  z-index: 9997;
+  top: 0;
+  left: 0;
+  position: fixed;
+  background: rgba(43, 37, 35, 0.6);
+  overflow: hidden;
+  display: none;
+  transition: ease-in-out 0.2s;
+}
+
+.mobile-nav-active {
+  overflow: hidden;
+}
+
+.mobile-nav-active .mobile-nav {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-nav-active .mobile-nav-toggle i {
+  color: #fff;
+}
+
+
+/*--------------------------------------------------------------
+# Sections General
+--------------------------------------------------------------*/
+section {
+  padding: 60px 0;
+  overflow: hidden;
+}
+
+.section-bg {
+  background-color: #fff9f7;
+}
+
+.section-title {
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+.section-title h2 {
+  font-size: 32px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  padding-bottom: 0;
+  font-family: "Poppins", sans-serif;
+  color: #635551;
+}
+
+.section-title p {
+  margin-bottom: 0;
+}
+
+
+/*--------------------------------------------------------------
+# Values
+--------------------------------------------------------------*/
+.values .card {
+  border: 0;
+  padding: 160px 20px 20px 20px;
+  position: relative;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.values .card-body {
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 15px 30px;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+  transition: ease-in-out 0.4s;
+  border-radius: 5px;
+}
+
+.values .card-title {
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.values .card-title a {
+  color: #473d3a;
+}
+
+.values .card-text {
+  color: #4b4949;
+}
+
+.values .read-more a {
+  color: #656262;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 12px;
+  transition: 0.4s;
+}
+
+.values .read-more a:hover {
+  text-decoration: underline;
+}
+
+.values .card:hover .card-body {
+  background: #ff5821;
+}
+
+.values .card:hover .read-more a, .values .card:hover .card-title, .values .card:hover .card-title a, .values .card:hover .card-text {
+  color: #fff;
+}
+
+
+
+
+/*---
+/*--------------------------------------------------------------
+# Team
+--------------------------------------------------------------*/
+.team .member {
+  margin-bottom: 20px;
+  overflow: hidden;
+  text-align: center;
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.team .member .member-img {
+  position: relative;
+  overflow: hidden;
+}
+
+.team .member .social {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 40px;
+  opacity: 0;
+  transition: ease-in-out 0.3s;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.team .member .social a {
+  transition: color 0.3s;
+  color: #473d3a;
+  margin: 0 10px;
+  padding-top: 8px;
+  display: inline-block;
+}
+
+.team .member .social a:hover {
+  color: #ff5821;
+}
+
+.team .member .social i {
+  font-size: 18px;
+  margin: 0 2px;
+}
+
+.team .member .member-info {
+  padding: 25px 15px;
+}
+
+.team .member .member-info h4 {
+  font-weight: 700;
+  margin-bottom: 5px;
+  font-size: 18px;
+  color: #473d3a;
+}
+
+.team .member .member-info span {
+  display: block;
+  font-size: 13px;
+  font-weight: 400;
+  color: #989595;
+}
+
+.team .member .member-info p {
+  font-style: italic;
+  font-size: 14px;
+  line-height: 26px;
+  color: #656262;
+}
+
+.team .member:hover .social {
+  opacity: 1;
+}
+
+/*--------------------------------------------------------------
+# Pricing
+--------------------------------------------------------------*/
+.pricing .box {
+  padding: 20px;
+  background: #fff;
+  text-align: center;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.12);
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.pricing h3 {
+  font-weight: 400;
+  margin: -20px -20px 20px -20px;
+  padding: 20px 15px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #656262;
+  background: #f8f8f8;
+}
+
+.pricing h4 {
+  font-size: 36px;
+  color: #ff5821;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 20px;
+}
+
+.pricing h4 sup {
+  font-size: 20px;
+  top: -15px;
+  left: -3px;
+}
+
+.pricing h4 span {
+  color: #bababa;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.pricing ul {
+  padding: 0;
+  list-style: none;
+  color: #313030;
+  text-align: center;
+  line-height: 20px;
+  font-size: 14px;
+}
+
+.pricing ul li {
+  padding-bottom: 16px;
+}
+
+.pricing ul i {
+  color: #ff5821;
+  font-size: 18px;
+  padding-right: 4px;
+}
+
+.pricing ul .na {
+  color: #ccc;
+  text-decoration: line-through;
+}
+
+.pricing .btn-wrap {
+  margin: 20px -20px -20px -20px;
+  padding: 20px 15px;
+  background: #f8f8f8;
+  text-align: center;
+}
+
+.pricing .btn-buy {
+  background: #ff5821;
+  display: inline-block;
+  padding: 6px 35px 8px 35px;
+  border-radius: 4px;
+  color: #fff;
+  transition: none;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  box-shadow: 0 3px 7px rgba(255, 88, 33, 0.4);
+  transition: 0.3s;
+}
+
+.pricing .btn-buy:hover {
+  background: #ff7e54;
+}
+
+.pricing .featured h3 {
+  color: #fff;
+  background: #ff5821;
+  box-shadow: 0 3px 7px rgba(255, 88, 33, 0.4);
+}
+
+.pricing .advanced {
+  width: 200px;
+  position: absolute;
+  top: 18px;
+  right: -68px;
+  transform: rotate(45deg);
+  z-index: 1;
+  font-size: 14px;
+  padding: 1px 0 3px 0;
+  background: #ff5821;
+  color: #fff;
+}
+
+/*--------------------------------------------------------------
+# Contact
+--------------------------------------------------------------*/
+.contact .info-box {
+  color: #313030;
+  box-shadow: 0 0 30px rgba(214, 215, 216, 0.6);
+  padding: 20px;
+}
+
+.contact .info-box i {
+  font-size: 32px;
+  color: #ff5821;
+  border-radius: 50%;
+  padding: 8px;
+  border: 2px dotted #ffded4;
+  float: left;
+}
+
+.contact .info-box h3 {
+  font-size: 20px;
+  color: #656262;
+  font-weight: 700;
+  margin: 10px 0 10px 68px;
+}
+
+.contact .info-box p {
+  padding: 0;
+  line-height: 24px;
+  font-size: 14px;
+  margin: 0 0 0 68px;
+}
+
+.contact .php-email-form {
+  box-shadow: 0 0 30px rgba(214, 215, 216, 0.6);
+  padding: 30px;
+}
+
+.contact .php-email-form .validate {
+  display: none;
+  color: red;
+  margin: 0 0 15px 0;
+  font-weight: 400;
+  font-size: 13px;
+}
+
+.contact .php-email-form .error-message {
+  display: none;
+  color: #fff;
+  background: #ed3c0d;
+  text-align: left;
+  padding: 15px;
+  font-weight: 600;
+}
+
+.contact .php-email-form .error-message br + br {
+  margin-top: 25px;
+}
+
+.contact .php-email-form .sent-message {
+  display: none;
+  color: #fff;
+  background: #18d26e;
+  text-align: center;
+  padding: 15px;
+  font-weight: 600;
+}
+
+.contact .php-email-form .loading {
+  display: none;
+  background: #fff;
+  text-align: center;
+  padding: 15px;
+}
+
+.contact .php-email-form .loading:before {
+  content: "";
+  display: inline-block;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  margin: 0 10px -6px 0;
+  border: 3px solid #18d26e;
+  border-top-color: #eee;
+  -webkit-animation: animate-loading 1s linear infinite;
+  animation: animate-loading 1s linear infinite;
+}
+
+.contact .php-email-form input, .contact .php-email-form textarea {
+  border-radius: 0;
+  box-shadow: none;
+  font-size: 14px;
+}
+
+.contact .php-email-form input::focus, .contact .php-email-form textarea::focus {
+  background-color: #ff5821;
+}
+
+.contact .php-email-form input {
+  padding: 20px 15px;
+}
+
+.contact .php-email-form textarea {
+  padding: 12px 15px;
+}
+
+.contact .php-email-form button[type="submit"] {
+  background: #ff5821;
+  border: 0;
+  padding: 10px 24px;
+  color: #fff;
+  transition: 0.4s;
+}
+
+.contact .php-email-form button[type="submit"]:hover {
+  background: #ff7e54;
+}
+
+@-webkit-keyframes animate-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes animate-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+.card-img-top {
+    width: 100%;
+    height: 1vw;
+    object-fit: cover;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Raleway", sans-serif;
+  font-size: 3vw;
+}
+
+
+
+@media all and (max-width: 1200px) { /* screen size until 1200px */
+    body {
+        font-size: 1em; /* 1.5x default size */
+    }
+}
+
+@media (max-width: 400px){
+  .menu-btn_burger{
+    display: flex;
+
+  }
+  .nav-menu a{
+    /*display: none;*/
+
+  }
+  .nav-menu li{
+    width: 100%;
+    flex-direction: column;
+  }
+  .nav-menu{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-menu ul{
+    text-align: center;
+  }
+
+  .nav-menu a{
+    padding: .5rem 1rem;
+  }
+}
+
+
+@media all and (max-width: 1000px) { /* screen size until 1000px */
+    body {
+        font-size: 0.8em; /* 1.2x default size */
+        }
+    }
+
+/*@media (max-width: 600px){*/
+/*  .menu-btn_burger{*/
+/*    display: flex;*/
+
+/*  }*/
+/*  .nav-menu a{*/
+/*    display: none;*/
+
+/*  }*/
+/*  .nav-menu li{*/
+/*    width: 100%;*/
+/*    flex-direction: column;*/
+/*  }*/
+/*  .nav-menu{*/
+/*    flex-direction: column;*/
+/*    align-items: flex-start;*/
+/*  }*/
+
+/*  .nav-menu ul{*/
+/*    text-align: center;*/
+/*  }*/
+
+/*  .nav-menu a{*/
+/*    padding: .5rem 1rem;*/
+/*  }*/
+/*  .nav-menu a.active{*/
+/*    display: flex;*/
+
+/*  }*/
+/*}*/
+@media all and (max-width: 500px) { /* screen size until 500px */
+    body {
+        font-size: 0.6em; /* 0.8x default size */
+        }
+    }
+@media (max-width: 500px){
+.card-title {
+  font-size: .5em;
+  word-break: keep-all !important;
+}
+.card-body{
+  ont-size: .5em;
+  word-break: keep-all !important;
+}
+
+.section-title {
+  color: blue;
+}
+h2.aos-init {
+  color: blue;
+}
+h3{
+  color: blue;
+}
+}
+
+.nav-item a {
+  float: left;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.nav-item a:hover {
+  background-color: #F6BFBF;
+}
+
+.active {
+  background-color: #04AA6D;
+}
+/* The navigation bar */
+
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  /*position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+  z-index: 9999;/*do this to put the data to the front
+}
+/* Main content */
+.main {
+  margin-bottom: 30px; /* Add a bottom margin to avoid content overlay */
+
+}
+
+
+
+.list-group {
+  overflow: auto;
+}
+
+
+

@@ -1,0 +1,32 @@
+{% extends "../base.html" %}
+{% load static %}
+{% block title %}Create new list{% endblock %}
+{% block content1 %}
+<link href="{% static 'css/main css/style.css' %}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+
+
+{% block content %}
+
+<section id="registration">
+
+    <div class="row justify-content-center aos-init" data-aos="fade-up" data-aos-delay="300">
+
+        <div class="align-content-center">
+            <form method="post" action="/create" class="form-group align-content-center">
+                {% csrf_token %}
+
+                {{form.as_p}}
+
+
+
+                <button , name="save" type="submit">save item</button>
+
+            </form>
+            <a href="/login1/">Login</a>
+
+
+        </div>
+    </div>
+</section>
+{% endblock %}

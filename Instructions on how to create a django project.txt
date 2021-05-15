@@ -1,0 +1,314 @@
+ABSTRACT: 	THIS FILE SHOWS THE STEPS REQUIRED TO CREATE A DJANGO PROJECT IN PYCHARM COMMUNITY 
+		EDITION. GIVEN THAT THE COMMUNITY EDITION DOES NOT HELP CREATE THE TEMPLATES FOR
+		A DJANGO PROJECT. 
+
+		a link helping with this topics can be found in :
+			"https://automationpanda.com/2017/09/14/django-projects-in-pycharm-community-edition/"
+		
+	LINK TO TUTORIAL WHERE YOU CAN CHECK MODELS CREATIONS AND HOW AN WEB SHOP  
+	   			BY USING DJANGO:
+		"https://www.youtube.com/watch?v=UqSJCVePEWU&t=8969s"
+
+IMPORTANT: ON THIS I PUT A LOT OF COMMANDS AND CODE BETWEEN THIS SYMBOLS EXAMPLE: "....." ALWAY TAKE THEM AWAY OR OBVIUSLY IT WONT RUN
+
+IMPORTANT COMMANDS ON THE SHELL CMD: 
+		py manage.py runserver (with this you run the application"
+
+		Control + c (shut down the server)
+
+		py manage.py makemigrations
+		py manage.py migrate (this two have to be run every time you change something on the "models.py" file dont forget that here are the databases) 
+
+1. 	*open pycharm and create a project
+	*on this window click on >Project interpreter: New Virtualenv environment
+	*create a virtual environment(anaconda might cause problems so use the default one)
+	* write CMD on the search bar and open 
+	*once the project is created open the virtual environment on the commanshell CMD 
+	of your project by going to the "venv" folder in your project with the help of 
+	in the command shell: 
+
+		"CD name of folder"" repetir este comando hasta lllegar a la carpeta "venv"
+	*once you are inside of the folder "venv" write the command in the CMD 
+	to activate the virtual environment:
+
+		"activate"
+	*once virtual environment was activated then
+	proceed to pip install next libraries on command shell cmd:
+	
+	"pip install django"#(this library is necesary for everything it is the pillar for web development in python thou you can try "flask" for less complicated projects
+	"pip install pillow"#(this library allows you to handle image, check just to be sure because im tire and i dont remember exactly)
+
+2. run the following commands on the respective project folder in virtual environment:
+	> django-admin startproject "name of the core"
+	> cd "name of the core"
+	> django-admin startapp "name of the app for your project"
+
+3. go to the settings.py file and to then to the INSTALLED_APPS dictionary.
+add to line 40 the commmand: 'name of the app for your project,'
+
+4. 	Go to file->'name of the app for your project' 
+	go to python file->"models.py"
+	here you will create your models. a model is just the control for the databases
+	paste "from django.contrib.auth.models import User"
+	create the classes required to run your database
+	this databases will have the form ("class Name_chosen_by_you(models.Model):... ") 
+
+5. after building the models run in CMD to create the databases: 
+	"py manage.py makemigrations"
+	"PY manage.py migrate"
+6. Pycharm community edition does not have any tool to handle databases so it is important 
+   to install the plug in: 
+	"database navigator"
+
+   LINK ON HOW TO ADD PLUGINS TO PYCHARM:
+	"https://www.jetbrains.com/help/pycharm/managing-plugins.html"
+7. HOW TO CONNECT THE DATABASE
+	*once the plug in is added in the left side of pycharm should appear a tag called "DB Browser"
+ 	*press that
+	*once inside you will see a green plus(+) sign. press it to add a database
+	*it will give you various options. on this example use sqlite press it
+	*a window will open. there you will go to "Database files" and press the + button.
+	*here you will navigate until you find the sql file created by your project and add it
+
+8. CREATE A MEDIA FOLDER IN THE PROJECT FOLDER (to save the images)
+	*create the a folder named media(the name is just an example)
+	*for every new folder the python file "settings.py" must be modified
+	*go to the end of the file and write:
+		"MEDIA_URL = '/media/'"
+		"MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')"
+	* dont forget to import the os library on settings.py 
+		"import os"
+
+9. FOR DEBUGGIN PURPOSES ADD THIS LINES FOR DEBBUGIN THE MEDIA FILE
+	*go to-> "urls.py"
+	*import the two following libraries
+		"from django.conf import settings"
+		"from django.conf.urls.static import static"
+	*add the line of code:
+		"if settings.DEBUG:"
+    			"urlpatterns += static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)"
+10. NOW THE MEDIA FOLDER IS ACCESIBLE
+
+11. in file admin.py you can add the modules that you will use to your project
+	*to add the respective models paste the following code:
+		"from .models import Model 1, Model 2, ....."# we use the . operator to not confuse the folders
+	*then in order to register the modules in django we put the next line of code:
+		"@admin.register(Model 1)"
+	*create a class after the register:
+		(the followings are following the example of the video, the items on display belong
+		to the models created in the models)
+			"class CategoryAdmin(admin.ModelAdmin):"
+	*here you can add diferent functions that are already available on the documentation of admin file check it out
+	*once the functions of this have being specified go to cmd terminal and create the user with:
+		
+		"py manage.py createsuperuser"
+	*give the user name and the password. the email option can be left in blank
+12. TO RUN THE SERVER
+	*write on the command line:
+		"py manage.py runserver"
+13. ENTERING THE SERVER
+	*on the web browser paste:
+		"http://127.0.0.1:8000/admin"
+	*enter your username and password
+	*here you can add your products
+14. TO STOP THE SERVER PRESS:
+	"Control+c"
+
+15. THIS STEP IS OPTIONAL AND IT RELATES TO HOW TO TEST YOUR SOFTWARE TO SEE IF IT WORKS
+
+ 	*django creates a test option build around "unittest.py" documentation si required to read if you want to know more abou tit
+	
+	*to realize which tests could be used you can use a package named:
+		
+		"coverage"(it will scan your file and tell you which files you need)
+	*to instsall it write on the command shell:
+		
+		"pip install coverage"
+	*once install write the following on the shell command cmd:
+		"coverage run manage.py tests"
+	*coverage will run on the background and will be ready to give a report to get the report write:
+		"coverage report"
+	*the report will give you a lot of testing for the virtual environment that you may not required so just to check testing for your files press
+		"coverage run --omit='*/venv/*' manage.py test"
+		"coverage report"
+	*how to read the report: you will receive four columns 
+		name: the name of the file
+		Stmts : i dont know
+		Miss: the number of tests required
+		Cove: i dont know
+	*write the following command:
+		"coverage html"
+	*this command will create a folder named:
+		"htmlcov"
+	*paste its path on the searcher bar then go to the index file to get an overview of the test missing
+	*inside this index check the ones that have numbers on the missing column and press them.
+	*here you will find which test are to be made in red	
+
+
+	*(maybe dont follow this one, once i tried this it gave me an error if i gave a file the name tests so for now dondt follow this step)
+	*im tired as fuck i will not be doing test today i will continue to the next partOKKKKKKKKK
+^	create inside the "app folder"(the same one where 
+	is the admin.py file) a python package(if you create a folder it wont read as it does not possess a __init__.py file so python will never  read this folder)
+	
+16. DEFINE WHICH VIEWS YOU WILL HAVE FOR YOUR WEB PAGE example home page, payment section, ...
+	*to do this we need to manage our URLs
+	*for better programming practices extend the url folder to the application folders
+	*to do so create a file "urls.py" on the application folder the one with the models and the admin and the one that says apps
+	*on the original "urls.py" file found on the core folder the one with the "settings.py" file 
+	we have to make it understand that it must read from the new file we just created.
+	* to do so go to the original "urls.py"
+	*transform line of code in line 17:
+
+		"from django.urls import path" into-> "from django.urls import path, include"
+	*write in side the "urlpatterns = [...]" the following code
+		
+		"path('', include('name of the app for your project.urls', namespace='name of the app for your project')),"
+	*go to the new "urls.py" file and add the views(urls) to do so write the following code:
+		"from django.urls import path"
+		"from .import views"
+		
+		"app_name = 'name of the app for your project"#(this name has to match the one given  on the original urls.py line of code)
+		"urlpatterns = [
+			path('', views.all_products, name='all_products'),#creates a path connected to the view(the view is not yet created here but later
+			...
+		]"
+	*to create the view go to "views.py"
+	*here we will unify everything
+	*since im working with models(databases) we are going to have to call them by writing the
+	following code:
+		
+		"from .models import Model 1, Model 2, .....,Model n"
+	*define a function with the same name to the one given in "urlpatterns =[..]" in the path(....name='all_products')
+	it is important to know that you decide the name of this one so it will change depending on which view you are making
+	thus, write the following code to create one such function:
+		
+		"def all_produdcts(request):"# inside of request goes the users request information
+	*inside of the function you can ask for data from the database and then load it
+	on the template, an example would be:
+	
+		"products = Product.objects.all()# this line of code is the SQL equivalent to call all objects from my model"
+		"return render(request, 'store/home.html', {'products': products})#loads the associated information into the templates"
+
+17. CREATE THE TEMPLATES
+	*create a folder named templates on the global project file for better practices create one folder inside this one for every part
+	*inside the folder create an html file named home.html this, or any other name you gave.
+	*go to the "settings.py" file on the core folder and then change the following code to tell the program where are the templates like this:
+
+		line 47: 'DIRS': []," into ->"'DIRS': [BASE_DIR / 'templates'],"
+	*write the footer and header, this will be parts of the template that will be the same for every template so we code in one single file so we dont repeat
+	*im not gonna write this part just watch the video on time stamp 1:25:50
+
+	*the only way for the project to read a new file is when the settings document is changes as such add to the settings at the botton on line 122 or something more the code:
+		
+		"STATIC_URL = '/static/'#the followings lines go into the settings.py file
+		STATICFILES_DIRS= [#we add this values to make the software read out static folder
+
+    			os.path.join(BASE_DIR, 'static'),
+		]"
+	*create a base.html file
+	*in the base file add this code:
+		
+		"{% load static %}
+		<!--add this in line 1 as the first line-->"
+
+		"<title>{% block title %}Title{% endblock %}</title>
+		<!--this line allows to have a dynamic title replace it within the head of the html file base-->"
+
+		" <div id="content">{% block content %}HELLO PAGE{% endblock %}</div>
+		<!--this part is done on the body of the base.html file-->"
+
+		
+	*if you want to inherit from the base file to another file put the following code on the new html file:	
+
+		"	{% extends "./base.html" %}
+			{% load static %}
+			{% block title %}Home{% endblock %}
+
+			{% block content %}
+   			 HELLO PAGE
+			{% endblock %}"
+	* if you want to rearrange html code in pycharm to make it look better press:
+		
+		"Control + space + L"
+
+18. HOW TO PASS DATA FROM DATA BASE TO HTML IN DJANGO
+	*go to the views.py
+	*First you must have the models imported with this line of code
+
+		"from .models import model1, model2, ...."
+	*create a function that gives a return this code is an example:
+		
+		"def name_you_want(request):
+			return {
+                 		'categories': Category.objects.all()#this return function is equivalent to calling the sql of all dadta from Category and putting it on the object variable
+         			}
+			"
+	*to make the reference 'categories' availale in every single page go to settings.py
+	*add inside of TEMPLATES = [..'context_processors' : {xxxx},...] dictionary around line 67 the following code:
+
+		"'store.views.categories',"
+	*within the html of the respective view the data can be looped simply by adding fors for example:
+
+		"{% for variable in name_given_at_the_view %}
+
+			{{ variable.DB_column_banme|some_filter_of_your_choice_optionl}}			
+
+		{% endfor %}"
+
+19.DYNAMIC URLS:
+	*go to models.py
+	*add this line of code in line 3:
+		
+		"from django.urls import reverse"# this line allow us to bulid an url
+
+20. FORMS
+ * go to views and create a function for that form
+	"def login(request):
+
+    		return render(request, 'store/login.html',)"
+
+ *create a template and add the base and everything as done in django and create a form with maye a button
+		
+	"<form method="post" class="form-group" action="/create/">
+		{% csrf_token %}
+        	{{form}}
+        	<button type="submit", name="save">save item</button>
+   	 </form>"
+ *now we have to create the form by making a new file inside the main application. i mean where you find the models.py and admin.py files
+ directory named "forms.py"
+ * in this py file put the next code so django will create the forms automatically for you:
+
+	"
+	from django import forms
+
+	class CreateNewList(forms.Form):#allow us to generate automatically new forms
+    		name = forms.Charfield(Label="Name", max_length=200)#creates an imput of a name
+    		check = forms.BooleanField()#creates check button
+	
+	class SecondForm.....
+	class ThirdForm...
+	.
+	.
+	.
+	the number of forms that you want 
+	"
+ *once this is done go to the views.py file and write to the imports 
+ this code this will import the form that you just created into my views:
+
+	"from .forms import CreateNewList# this imports from the forms.py file that you  just created thad takes the respective form from it"
+
+ * in the view that we created in views.py to receive out form 
+ in the 20.1 "step def login(request):..." change it so it looks like this:
+
+	"def login(request):
+    		form = CreateNewList#this will tke the list from the imported forms.py
+    		return render(request, 'store/login.html', {"form":form})"#this will pass the values inside of that form to the html file
+ *so that it can identify if what it receices its  a post or a get message add this line of code to the view:
+
+	" 
+	if response.method == "POST":#post for changing something
+        	form = CreateNewList(response.POST)
+    	else:
+        	form = CreateNewList
+	"
+*

@@ -1,0 +1,52 @@
+{% extends "../base.html" %}
+{% load static %}
+{% block title %}Create new list{% endblock %}
+{% block content1 %}
+<link href="{% static 'css/main css/style.css' %}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+{% block content %}
+
+<main>
+    <section>
+        <div class="row justify-content-center aos-init" data-aos="fade-up" data-aos-delay="300">
+            <form class="form-signin" method="POST" action="">
+                {% csrf_token %}
+                <div class="text-center mb-4">
+                    <a class="navbar-brand" href="#">
+                        <img alt="logo" class="img-fluid rounded-circle" src="{% static 'images/TilapiaHTM.JPG' %}"
+                             style="width:40px;">
+                    </a>
+                    <h1 class="h3 mb-3 font-weight-normal">CLIENTES FIELES</h1>
+                    <p>Porfavor ingrese su nombre de usuario y contrasena
+                    </p>
+                </div>
+
+                <div class="form-label-group">
+                    <input name= "username" type="username" id="username" class="form-control" placeholder="Username" required=""
+                           autofocus="">
+                    <label >Username</label>
+                </div>
+
+                <div class="form-label-group">
+                    <input name= "password" type="password" id="password" class="form-control" placeholder="Password" required="">
+                    <label >Contrasena</label>
+                </div>
+
+                <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Recuerdame
+                    </label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                <p class="mt-5 mb-3 text-muted text-center">© 2017-2019</p>
+                {% for message in messages %}
+                <p>nombre de usuario o contrasena incorrecta</p>
+                {% endfor %}
+            </form>
+            <a href="/create">Register up</a>
+
+        </div>
+    </section>
+</main>
+
+{% endblock %}
